@@ -21,3 +21,9 @@ submitButton.onclick = function() {
     let w = document.getElementById('width').value;
     makeGrid(h, w);
 }
+
+grid.onclick = function(e) {
+    e.stopPropagation(); // останавливаем всплытие
+    let element = e.target;
+    element.style.backgroundColor = "black";
+}
