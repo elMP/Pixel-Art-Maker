@@ -1,0 +1,21 @@
+.container {
+    width: 800px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+}
+.inputs {
+    width: 600px;
+    margin: auto;  
+}
+table {
+    border-collapse: collapse;
+    margin: 10px auto;
+}
+td {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
