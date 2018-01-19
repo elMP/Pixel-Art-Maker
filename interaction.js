@@ -25,5 +25,5 @@ submitButton.onclick = function() {
 grid.onclick = function(e) {
     e.stopPropagation(); // останавливаем всплытие
     let element = e.target;
-    element.style.backgroundColor = "black";
+    element.style.backgroundColor = document.getElementById('color').value;
 }
