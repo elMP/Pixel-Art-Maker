@@ -15,11 +15,24 @@ function makeGrid(height, width) {
     }
 }
 
-createGrid.onclick = function() {
-    
+function setBackgroundColor() {
+    grid.style.backgroundColor = document.getElementById('backgroundColor').value;
+}
+
+function createNewCanvas() {
     let h = document.getElementById('height').value;
     let w = document.getElementById('width').value;
+    setBackgroundColor();
     makeGrid(h, w);
+}
+
+window.onload = createNewCanvas;
+createGrid.onclick = createNewCanvas;
+
+let backgroundColor = document.getElementById('backgroundColor');
+backgroundColor.onchange = function(e) {
+    //alert(document.getElementById('backgroundColor').value);
+    setBackgroundColor();
 }
 
 grid.onclick = function(e) {
