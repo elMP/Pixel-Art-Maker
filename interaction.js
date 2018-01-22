@@ -1,10 +1,10 @@
 function makeGrid(height, width) {
-    //delete prevous table
+    //delete prevous grid
     while (grid.firstChild) {
         grid.removeChild(grid.firstChild);
     }
 
-    //create new table
+    //create new grid
     for (let i = 0; i < height; ++i) {
         let newTr = document.createElement('tr');
         grid.appendChild(newTr);
@@ -15,7 +15,7 @@ function makeGrid(height, width) {
     }
 }
 
-submitButton.onclick = function() {
+createGrid.onclick = function() {
     
     let h = document.getElementById('height').value;
     let w = document.getElementById('width').value;

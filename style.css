@@ -20,7 +20,7 @@ body {
 }
 
 .header h1 {
-    font-family: 'VT323', monospace;
+    font-family: 'VT323', monospace, sans-serif;
     font-size: 96px;
     line-height: 100px;
     margin: 0;
