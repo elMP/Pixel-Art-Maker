@@ -3,29 +3,41 @@
     <head>
         <meta charset="utf-8">
         <title>Pixel art</title>
+        <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet"> 
         <link rel="stylesheet" href = "style.css"></link>
 
     </head>
     <body>
-        <div class="container">
-            <h1>Pixel Art App</h1> 
-            <div class="inputs">
-                <label>Height
-                    <input type="text" value="10" id="height">
-                </label>
-		        <br>
-                <label>Width
-                    <input type="text" value="10" id="width">
-                </label>
-                <br>
-                <label>Choose a color
+        <div class="header">
+            <div class="container">            
+                <h1>Pixel Art Maker</h1> 
+                <div class="create-table-controls controls">
+                    <label for="height">Height</label>
+                    <input id="height" type="number" value="10" min="1" max="100">
+                    <label for="width">Width</label>
+                    <input id="width" type="number" value="10" min="1" max="100">
+                    <input type="button" id="submitButton" class="btn" value="Create table">
+                </div>
+                <div class="pick-a-color-controls controls">
+                    <label for="color">Choose a color</label>
                     <input type="color" value="black" id="color">
-                </label>
-                <input type="button" id="submitButton" 
-                        value="Create table">
+                    
+                </div>
             </div>
-            <table id="grid">
-            </table>
+        </div>
+        <div class="canvas">
+            <div class="container">
+                <h2>Design canvas</h2>
+                <table id="grid">
+                </table>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="container">
+                <p>Project for Google Developer Challenge Scholarship: Front-End Web Dev at <a href="http://www.udacity.com">Udacity.com</a></p>
+                <p>Created by kneazle, <a href="https://github.com/elMP/Pixel-Art-Maker">Project on Github</a></p>
+                <p>2018</p>
+            </div>
         </div>
         <script src="interaction.js"></script>
     </body>
