@@ -5,6 +5,13 @@ body {
     margin: 0;
     padding: 0;
     background: rgb(114, 141, 64);
+
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .header {
@@ -66,4 +73,17 @@ td {
     width: 20px;
     height: 20px;
     border: 1px solid black;
+}
+
+.footer {
+    /*background: rgb(56, 77, 18);
+    margin: 0;*/
+}
+.footer a {
+    color: rgb(230, 220, 187);
+}
+
+.footer a:hover {
+    color: rgb(231, 201, 100);
+    font-weight: bold;
 }
