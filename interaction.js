@@ -1,3 +1,6 @@
+const BODY = document.getElementsByTagName('body')[0];
+let MOUSEDOWN = 0; //what button is down
+
 function makeGrid(height, width) {
     //delete prevous grid
     while (grid.firstChild) {
@@ -12,7 +15,7 @@ function makeGrid(height, width) {
             let newTd = document.createElement('td');
             newTr.appendChild(newTd);
         }
-    }
+    }    
 }
 
 function setBackgroundColor() {
@@ -26,17 +29,42 @@ function createNewCanvas() {
     makeGrid(h, w);
 }
 
-window.onload = createNewCanvas;
-createGrid.onclick = createNewCanvas;
+function paint(element) {
+    if (MOUSEDOWN == 1)
+        element.style.backgroundColor = document.getElementById('color').value;
+    else if (MOUSEDOWN == 3)
+        element.style.backgroundColor = '';
+}
 
-let backgroundColor = document.getElementById('backgroundColor');
+grid.onmousedown = function(e) {
+    e.preventDefault();
+
+    let element = e.target;
+    MOUSEDOWN = e.which;
+    paint(element);
+}
+
+grid.onmouseover= function(e) {
+    if (MOUSEDOWN && e.target.tagName == 'TD') {
+        paint(e.target);
+    }
+}
+
+grid.oncontextmenu = function(e) {
+    e.preventDefault();
+}
+
 backgroundColor.onchange = function(e) {
-    //alert(document.getElementById('backgroundColor').value);
     setBackgroundColor();
 }
 
-grid.onclick = function(e) {
-    e.stopPropagation(); // останавливаем всплытие
-    let element = e.target;
-    element.style.backgroundColor = document.getElementById('color').value;
+BODY.onmouseup = function(e) {
+    MOUSEDOWN = 0;
 }
+
+window.onload = createNewCanvas;
+createGrid.onclick = createNewCanvas;
+
+
+
+
