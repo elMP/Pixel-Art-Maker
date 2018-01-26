@@ -62,8 +62,25 @@ BODY.onmouseup = function(e) {
     MOUSEDOWN = 0;
 }
 
+function numbersLessThen100Allowed(e) {
+    //if special key down allow character input
+    if (e.charCode < 32)
+        return;
+
+    //if already entered number contains less then two digits
+    //and if new character is between 0 and 9
+    //then allow character input
+    if (this.value.length < 2 && e.charCode >= 48 && e.charCode <= 57)
+        return;
+    
+    //otherwise don't allow character input
+    return false;
+}
+
 window.onload = createNewCanvas;
 createGrid.onclick = createNewCanvas;
+height.onkeypress = numbersLessThen100Allowed;
+width.onkeypress = numbersLessThen100Allowed;
 
 
 
