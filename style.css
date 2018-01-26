@@ -54,11 +54,14 @@ body {
     margin-right: 20px;
     margin-left: 5px;
     padding: 10px;
+    outline: 0;
+    outline-offset: 0;
 }
 
 .pick-a-color-controls input {
-    height: 30px;
+    height: 40px;
     padding: 0px;
+    background: none;
 }
 
 .create-table-controls .btn:hover {
