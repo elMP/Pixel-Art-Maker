@@ -36,6 +36,17 @@ function paint(element) {
         element.style.backgroundColor = '';
 }
 
+//workarond because window.getSelection().toString() doesn't work correctly in Firefox
+function getSelectionText(element) {
+    if (window.getSelection) {
+        try {
+            return element.value.substring(element.selectionStart, element.selectionEnd);            
+        } catch (e) {
+            console.log('Cant get selection text')
+        }
+    } 
+}
+
 grid.onmousedown = function(e) {
     e.preventDefault();
 
@@ -68,9 +79,11 @@ function numbersLessThen100Allowed(e) {
         return;
 
     //if already entered number contains less then two digits
+    //or selection in input exists
     //and if new character is between 0 and 9
     //then allow character input
-    if (this.value.length < 2 && e.charCode >= 48 && e.charCode <= 57)
+    if ( (this.value.length < 2 || getSelectionText(e.target) )
+        && e.charCode >= 48 && e.charCode <= 57)
         return;
     
     //otherwise don't allow character input
@@ -81,7 +94,3 @@ window.onload = createNewCanvas;
 createGrid.onclick = createNewCanvas;
 height.onkeypress = numbersLessThen100Allowed;
 width.onkeypress = numbersLessThen100Allowed;
-
-
-
-
