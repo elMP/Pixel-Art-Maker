@@ -13,10 +13,10 @@
                 <div class="container">            
                     <h1>Pixel Art Maker</h1> 
                     <div class="create-table-controls controls">
-                        <label for="height">Height</label>
-                        <input id="height" type="text" value="10" min="1" max="99">
-                        <label for="width">Width</label>
-                        <input id="width" type="text" value="10" min="1" max="99">
+                        <label for="height">Height<br><span class="tip">(1-99)</span></label>
+                        <input id="height" type="text" value="10">
+                        <label for="width">Width<br><span class="tip">(1-99)</span></label>
+                        <input id="width" type="text" value="10">
                         <input type="button" id="createGrid" class="btn" value="Create Grid">
                     </div>
                     <div class="pick-a-color-controls controls">
@@ -30,6 +30,7 @@
             <div class="canvas">
                 <div class="container">
                     <h2>Design canvas</h2>
+                    <p><i>Left button to paint, right button to erase.</i></p>
                     <table id="grid">
                     </table>
                 </div>

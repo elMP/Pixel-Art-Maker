@@ -73,7 +73,19 @@ BODY.onmouseup = function(e) {
     MOUSEDOWN = 0;
 }
 
+//add or remove warning about allowed height and width
+function addOrRemoveWarning(action) {
+    let tips = document.getElementsByClassName('tip');
+    for (let i = 0; i < tips.length; ++i)
+        if (action == 'add')
+            tips[i].classList.add('warning');
+        else if (action == 'remove')
+            tips[i].classList.remove('warning');
+}
+
 function numbersLessThen100Allowed(e) {
+    addOrRemoveWarning('remove');
+
     //if special key down allow character input
     if (e.charCode < 32)
         return;
@@ -87,6 +99,7 @@ function numbersLessThen100Allowed(e) {
         return;
     
     //otherwise don't allow character input
+    addOrRemoveWarning('add');
     return false;
 }
 

@@ -58,6 +58,11 @@ body {
     outline-offset: 0;
 }
 
+.controls input[type="text"] {
+    width: 40px;
+    text-align: center;
+}
+
 .pick-a-color-controls input {
     height: 40px;
     padding: 0px;
@@ -68,7 +73,24 @@ body {
     background: rgb(18, 24, 7);
 }
 
+.create-table-controls .tip {
+    font-style: italic;
+    font-size: 14px;
+}
+
+.warning {
+    color: yellow;
+}
+
 .canvas {
+    margin: 10px;
+}
+
+.canvas h2 {
+    margin: 0;
+}
+
+.canvas p {
     margin: 10px;
 }
 
