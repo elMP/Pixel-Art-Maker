@@ -1,6 +1,13 @@
-const BODY = document.getElementsByTagName('body')[0];
-let MOUSEDOWN = 0; //what button is down
+const body = document.getElementsByTagName('body')[0];
+let mousedown = 0; //what button is down
+let grid = document.getElementById('grid');
+let color = document.getElementById('color');
+let backgroundColor = document.getElementById('backgroundColor');
+let createGrid = document.getElementById('createGrid');
+let height = document.getElementById('height');
+let width = document.getElementById('width');
 
+//draw table
 function makeGrid(height, width) {
     //delete prevous grid
     while (grid.firstChild) {
@@ -19,20 +26,21 @@ function makeGrid(height, width) {
 }
 
 function setBackgroundColor() {
-    grid.style.backgroundColor = document.getElementById('backgroundColor').value;
+    grid.style.backgroundColor = backgroundColor.value;
 }
 
+//use height, width and background colour to draw canvas
 function createNewCanvas() {
-    let h = document.getElementById('height').value;
-    let w = document.getElementById('width').value;
+    let h = height.value;
+    let w = width.value;
     setBackgroundColor();
     makeGrid(h, w);
 }
 
 function paint(element) {
-    if (MOUSEDOWN == 1)
-        element.style.backgroundColor = document.getElementById('color').value;
-    else if (MOUSEDOWN == 3)
+    if (mousedown == 1)
+        element.style.backgroundColor = color.value;
+    else if (mousedown == 3)
         element.style.backgroundColor = '';
 }
 
@@ -47,32 +55,6 @@ function getSelectionText(element) {
     } 
 }
 
-grid.onmousedown = function(e) {
-    e.preventDefault();
-
-    let element = e.target;
-    MOUSEDOWN = e.which;
-    paint(element);
-}
-
-grid.onmouseover= function(e) {
-    if (MOUSEDOWN && e.target.tagName == 'TD') {
-        paint(e.target);
-    }
-}
-
-grid.oncontextmenu = function(e) {
-    e.preventDefault();
-}
-
-backgroundColor.onchange = function(e) {
-    setBackgroundColor();
-}
-
-BODY.onmouseup = function(e) {
-    MOUSEDOWN = 0;
-}
-
 //add or remove warning about allowed height and width
 function addOrRemoveWarning(action) {
     let tips = document.getElementsByClassName('tip');
@@ -83,6 +65,7 @@ function addOrRemoveWarning(action) {
             tips[i].classList.remove('warning');
 }
 
+//check that height or width has allowed value
 function numbersLessThen100Allowed(e) {
     addOrRemoveWarning('remove');
 
@@ -101,6 +84,34 @@ function numbersLessThen100Allowed(e) {
     //otherwise don't allow character input
     addOrRemoveWarning('add');
     return false;
+}
+
+//event handlers
+grid.onmousedown = function(e) {
+    e.preventDefault();
+
+    let element = e.target;
+    mousedown = e.which;
+    paint(element);
+}
+
+grid.onmouseover= function(e) {
+    if (mousedown && e.target.tagName == 'TD') {
+        paint(e.target);
+    }
+}
+
+//we use right button to erasing
+grid.oncontextmenu = function(e) {
+    e.preventDefault();
+}
+
+backgroundColor.onchange = function(e) {
+    setBackgroundColor();
+}
+
+body.onmouseup = function(e) {
+    mousedown = 0;
 }
 
 window.onload = createNewCanvas;
