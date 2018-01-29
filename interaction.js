@@ -86,11 +86,14 @@ function numbersLessThen100Allowed(e) {
     return false;
 }
 
-//check that first symbol is not 0 and that whole value is not 0
-function checkInputValue(e) {
+//check that first symbol is not 0
+function firstSymbolIsNot0(e) {
     if (this.value[0] == '0')
         this.value = this.value.slice(1);
+}
 
+//chaeck that whole value is not 0
+function valueIsNot0(e) {
     if (!this.value)
         this.value = '1';
 }
@@ -127,5 +130,7 @@ window.onload = createNewCanvas;
 createGrid.onclick = createNewCanvas;
 height.onkeypress = numbersLessThen100Allowed;
 width.onkeypress = numbersLessThen100Allowed;
-height.oninput = checkInputValue;
-width.oninput = checkInputValue;
+height.oninput = firstSymbolIsNot0;
+width.oninput = firstSymbolIsNot0;
+height.onblur = valueIsNot0;
+width.onblur = valueIsNot0;
